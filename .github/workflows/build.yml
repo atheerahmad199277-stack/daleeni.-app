@@ -6,6 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q daleeni-android-mvp.zip
+      - run: sed -i 's#https://demotiles.maplibre.org/style.json#https://tiles.openfreemap.org/styles/liberty#' daleeni/app/src/main/java/com/daleeni/maps/MainActivity.kt
+      - run: sed -i 's#https://YOUR_PROJECT.supabase.co#https://jlwpmrakhxpcrdkefrqs.supabase.co#' daleeni/app/build.gradle.kts
+      - run: sed -i 's#YOUR_ANON_KEY#eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impsd3BtcmFraHhwY3Jka2VmcnFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ1NDM5NDMsImV4cCI6MjExMDExOTk0M30.mnhwTetDEQslPtQr6TGYkEekdcjGiFmXDCXOvcCgok4#' daleeni/app/build.gradle.kts
+      - run: sed -i 's#/rest/v1/reports#/rest/v1/daleeni_reports#' daleeni/app/src/main/java/com/daleeni/maps/ReportApi.kt
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
